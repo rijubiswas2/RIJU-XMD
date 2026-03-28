@@ -7,89 +7,179 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif;}
+
 body{
-  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
-  color:white;padding:20px;
+  background:#0a0a0a;
+  color:#fff;
+  padding:15px;
 }
 
 h1{text-align:center;margin-bottom:10px;}
 
-.links{text-align:center;margin-bottom:15px;}
+.links{text-align:center;margin-bottom:10px;}
 .links a{
-  margin:5px;padding:8px 15px;
-  background:rgba(255,255,255,0.1);
-  border-radius:20px;color:white;text-decoration:none;
+  margin:4px;
+  padding:6px 12px;
+  background:#111;
+  border-radius:20px;
+  color:#aaa;
+  text-decoration:none;
+  font-size:13px;
+}
+.links a:hover{background:#25D366;color:white;}
+
+.section-title{
+  margin:15px 0 8px;
+  font-size:15px;
+  color:#aaa;
 }
 
-.section-title{margin-top:20px;font-size:18px;}
-
 .container{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:12px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
 }
 
 .card{
-  background:rgba(255,255,255,0.05);
-  padding:12px;border-radius:12px;text-align:center;
-  transition:0.3s;
+  background:#111;
+  padding:10px;
+  border-radius:8px;
+  transition:0.2s;
 }
-.card:hover{transform:translateY(-5px);}
+.card:hover{transform:scale(1.02);}
 
-.price{color:#00ffcc;margin:5px 0;}
-
-button{
-  padding:6px 10px;border:none;border-radius:6px;cursor:pointer;
+.selected{
+  border:1px solid #25D366;
+  box-shadow:0 0 8px #25D36655;
 }
 
-.buy{background:#00c6ff;color:black;}
+.row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:14px;
+}
+
+.buy{
+  background:#222;
+  color:#fff;
+  padding:5px 10px;
+  border:none;
+  border-radius:5px;
+}
+.buy:hover{background:#25D366;}
+.added-btn{background:#25D366 !important;}
 
 .cart{
-  margin-top:20px;
-  background:rgba(0,0,0,0.3);
-  padding:15px;border-radius:12px;
+  margin-top:15px;
+  background:#111;
+  padding:12px;
+  border-radius:10px;
 }
 
 .cart-item{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin:8px 0;
+  margin:6px 0;
+  font-size:13px;
 }
 
 .qty button{
-  margin:0 3px;
-  background:#25D366;color:white;
+  background:#25D366;
+  border:none;
+  margin:0 2px;
+  padding:2px 6px;
+  color:white;
+  border-radius:4px;
 }
 
-.remove{background:red;color:white;}
+.remove{
+  background:red;
+  border:none;
+  padding:3px 6px;
+  color:white;
+  border-radius:4px;
+}
 
-.total{text-align:center;margin-top:10px;font-size:18px;}
+.total{text-align:center;margin-top:8px;}
 
 input{
-  width:100%;padding:10px;margin-top:10px;
-  border-radius:8px;border:none;
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  border:none;
+  border-radius:6px;
+  background:#111;
+  color:white;
 }
 
 .order{
-  width:100%;padding:12px;margin-top:10px;
-  background:#25D366;color:white;border:none;
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  border:none;
+  border-radius:6px;
+  background:#25D366;
+  color:white;
+  font-weight:bold;
+}
+
+/* SUPPORT BOX */
+.support{
+  margin-top:15px;
+  background:#111;
+  padding:12px;
+  border-radius:10px;
+  text-align:center;
+}
+.support h3{
+  margin-bottom:8px;
+}
+.support a{
+  display:block;
+  margin:5px 0;
+  padding:8px;
+  background:#222;
+  border-radius:6px;
+  color:#aaa;
+  text-decoration:none;
+}
+.support a:hover{
+  background:#25D366;
+  color:white;
 }
 
 /* POPUP */
 .popup{
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  background:rgba(0,0,0,0.8);
-  display:none;justify-content:center;align-items:center;
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.9);
+  display:none;
+  justify-content:center;
+  align-items:center;
 }
 
 .popup-box{
-  background:#111;padding:20px;border-radius:12px;
-  text-align:center;position:relative;
+  background:#111;
+  padding:20px;
+  border-radius:10px;
+  text-align:center;
+  position:relative;
+  animation:pop 0.3s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(0.7);}
+  to{transform:scale(1);}
 }
 
 .close{
-  position:absolute;top:5px;right:10px;cursor:pointer;
+  position:absolute;
+  top:5px;
+  right:10px;
+  cursor:pointer;
 }
 </style>
 </head>
@@ -99,36 +189,40 @@ input{
 <h1>🚀 RIJU XMD SERVICES</h1>
 
 <div class="links">
-<a href="https://www.instagram.com/coldemotions_" target="_blank">Instagram</a>
-<a href="https://whatsapp.com/channel/0029Vb0k8h95PO10OtSIvF2G" target="_blank">Channel</a>
-<a href="https://chat.whatsapp.com/I3lJmqapVm99KKEYZjJWNg?mode=gi_t" target="_blank">Group</a>
+<a href="https://www.instagram.com/coldemotions_" target="_blank">Owner Instagram</a>
 </div>
 
-<div class="section-title">📸 Instagram Services</div>
+<div class="section-title">Instagram Services</div>
 <div class="container" id="insta"></div>
 
-<div class="section-title">📘 Facebook Services</div>
+<div class="section-title">Facebook Services</div>
 <div class="container" id="fb"></div>
 
 <div class="cart">
-  <h3>🧾 Your Order</h3>
-  <div id="cartItems"></div>
-  <div class="total" id="total">Total: ₹0</div>
+<h3>Your Order</h3>
+<div id="cartItems"></div>
+<div class="total" id="total">Total: ₹0</div>
 </div>
 
-<input type="text" id="link" placeholder="Enter Post Link (Required)">
+<input id="link" placeholder="Enter Post Link (Required)">
 <button class="order" onclick="sendOrder()">Order on WhatsApp</button>
+
+<!-- SUPPORT -->
+<div class="support">
+<h3>Need Help / Support</h3>
+<a href="https://whatsapp.com/channel/0029Vb0k8h95PO10OtSIvF2G" target="_blank">📢 Join WhatsApp Channel (Updates)</a>
+<a href="https://chat.whatsapp.com/I3lJmqapVm99KKEYZjJWNg?mode=gi_t" target="_blank">👥 Join WhatsApp Group (Support)</a>
+</div>
 
 <!-- POPUP -->
 <div class="popup" id="popup">
-  <div class="popup-box">
-    <span class="close" onclick="closePopup()">❌</span>
-    <h3>TODAY'S PACKAGE</h3>
-    <p>3K LIKE + 5K FREE VIEWS</p>
-    <p>Only ₹60</p>
-    <p>DM NOW ON WHATSAPP</p>
-    <button onclick="goWhatsApp()">Chat Now</button>
-  </div>
+<div class="popup-box">
+<span class="close" onclick="closePopup()">❌</span>
+<h3>TODAY'S PACKAGE</h3>
+<p>3K LIKE + 5K FREE VIEWS</p>
+<p>Only ₹60</p>
+<button class="order" onclick="goWhatsApp()">Chat Now</button>
+</div>
 </div>
 
 <script>
@@ -136,302 +230,145 @@ input{
 const WHATSAPP="917364934516";
 let cart={};
 
-// INSTAGRAM SERVICES
 const insta=[
-{name:"1K Likes",price:20},
-{name:"2K Likes",price:35},
-{name:"5K Likes",price:90},
-{name:"10K Likes",price:180},
-
-{name:"1K Followers",price:80},
-{name:"5K Followers",price:150},
+{name:"1K Likes",price:20},{name:"2K Likes",price:35},
+{name:"5K Likes",price:90},{name:"10K Likes",price:180},
+{name:"1K Followers",price:80},{name:"5K Followers",price:150},
 {name:"10K Followers",price:500},
-
-{name:"10K Views",price:20},
-{name:"50K Views",price:95},
+{name:"10K Views",price:20},{name:"50K Views",price:95},
 {name:"100K Views",price:180}
 ];
 
-// FACEBOOK SERVICES
 const fb=[
-{name:"1K Likes",price:30},
-{name:"2K Likes",price:55},
+{name:"1K Likes",price:30},{name:"2K Likes",price:55},
 {name:"5K Likes",price:145},
-
-{name:"1K Followers",price:60},
-{name:"2K Followers",price:110},
-{name:"5K Followers",price:280},
-{name:"10K Followers",price:550},
-
-{name:"1K Views",price:15},
-{name:"2K Views",price:25},
+{name:"1K Followers",price:60},{name:"2K Followers",price:110},
+{name:"5K Followers",price:280},{name:"10K Followers",price:550},
+{name:"1K Views",price:15},{name:"2K Views",price:25},
 {name:"5K Views",price:70}
 ];
 
-// CREATE SERVICES
 function create(list,id,platform){
-  const c=document.getElementById(id);
-  list.forEach(s=>{
-    let d=document.createElement("div");
-    d.className="card";
-    d.innerHTML=`<h3>${s.name}</h3><div class="price">₹${s.price}</div><button class="buy">Buy</button>`;
-    c.appendChild(d);
+const c=document.getElementById(id);
 
-    d.querySelector("button").onclick=()=>{
-      let key=platform+"-"+s.name;
-      if(!cart[key]) cart[key]={...s,qty:0,platform};
-      cart[key].qty++;
-      renderCart();
-    };
-  });
+list.forEach(s=>{
+let d=document.createElement("div");
+d.className="card";
+
+d.innerHTML=`
+<div class="row">
+<span>${s.name}</span>
+<span>₹${s.price}</span>
+<button class="buy">Buy</button>
+</div>`;
+
+c.appendChild(d);
+
+let btn=d.querySelector("button");
+
+btn.onclick=()=>{
+let key=platform+"-"+s.name;
+
+if(!cart[key]) cart[key]={...s,qty:0,platform};
+
+cart[key].qty++;
+
+d.classList.add("selected");
+btn.classList.add("added-btn");
+btn.innerText="Added";
+
+c.prepend(d);
+
+renderCart();
+};
+});
 }
 
-// CART
 function renderCart(){
-  let container=document.getElementById("cartItems");
-  container.innerHTML="";
-  let total=0;
+let html="";
+let total=0;
 
-  for(let key in cart){
-    let item=cart[key];
-    total+=item.price*item.qty;
+for(let key in cart){
+let i=cart[key];
+total+=i.price*i.qty;
 
-    let div=document.createElement("div");
-    div.className="cart-item";
+html+=`
+<div class="cart-item">
+${i.platform} ${i.name}
+<div class="qty">
+<button onclick="changeQty('${key}',-1)">-</button>
+${i.qty}
+<button onclick="changeQty('${key}',1)">+</button>
+</div>
+<button class="remove" onclick="removeItem('${key}')">X</button>
+</div>`;
+}
 
-    div.innerHTML=`
-      <span>${item.platform} ${item.name}</span>
-      <div class="qty">
-        <button onclick="changeQty('${key}',-1)">-</button>
-        ${item.qty}
-        <button onclick="changeQty('${key}',1)">+</button>
-      </div>
-      <button class="remove" onclick="removeItem('${key}')">X</button>
-    `;
+document.getElementById("cartItems").innerHTML=html;
+document.getElementById("total").innerText="Total: ₹"+total;
 
-    container.appendChild(div);
-  }
+// remove highlight
+document.querySelectorAll(".card").forEach(card=>{
+let name=card.querySelector("span").innerText;
+let found=Object.values(cart).find(i=>name.includes(i.name));
 
-  document.getElementById("total").innerText="Total: ₹"+total;
+if(!found){
+card.classList.remove("selected");
+let b=card.querySelector("button");
+b.classList.remove("added-btn");
+b.innerText="Buy";
+}
+});
 }
 
 function changeQty(key,val){
-  cart[key].qty+=val;
-  if(cart[key].qty<=0) delete cart[key];
-  renderCart();
+cart[key].qty+=val;
+if(cart[key].qty<=0) delete cart[key];
+renderCart();
 }
 
 function removeItem(key){
-  delete cart[key];
-  renderCart();
+delete cart[key];
+renderCart();
 }
 
-// SEND ORDER
 function sendOrder(){
-  let link=document.getElementById("link").value.trim();
-  if(!link) return alert("Enter link!");
+let link=document.getElementById("link").value.trim();
+if(!link) return alert("Enter link!");
+if(Object.keys(cart).length===0) return alert("Select service!");
 
-  if(Object.keys(cart).length===0) return alert("Select service!");
+let msg="*RIJU XMD SERVICES*%0A%0A";
+let total=0;
 
-  let msg="*RIJU XMD SERVICES*%0A%0A";
-  let total=0;
-
-  for(let key in cart){
-    let i=cart[key];
-    msg+=`• ${i.platform} ${i.name} x${i.qty}%0A`;
-    total+=i.price*i.qty;
-  }
-
-  msg+=`%0ATotal: ₹${total}%0A${link}`;
-
-  window.open(`https://wa.me/${WHATSAPP}?text=${msg}`);
+for(let key in cart){
+let i=cart[key];
+msg+=`• ${i.platform} ${i.name} x${i.qty}%0A`;
+total+=i.price*i.qty;
 }
 
-// POPUP (ALWAYS SHOW ON REFRESH)
-window.onload = () => {
-  document.getElementById("popup").style.display = "flex";
+msg+=`%0ATotal: ₹${total}%0A${link}`;
+
+window.open(`https://wa.me/${WHATSAPP}?text=${msg}`);
+}
+
+// POPUP
+window.onload=()=>{
+document.getElementById("popup").style.display="flex";
 };
 
 function closePopup(){
-  document.getElementById("popup").style.display = "none";
+document.getElementById("popup").style.display="none";
 }
 
 function goWhatsApp(){
-  window.open("https://wa.me/917364934516");
+let msg="I want to buy today's package";
+window.open(`https://wa.me/917364934516?text=${encodeURIComponent(msg)}`);
 }
 
-// INIT
 create(insta,"insta","Instagram");
 create(fb,"fb","Facebook");
 
 </script>
 
 </body>
-</html><a href="https://whatsapp.com/channel/0029Vb0k8h95PO10OtSIvF2G" target="_blank">Channel</a>
-<a href="https://chat.whatsapp.com/I3lJmqapVm99KKEYZjJWNg?mode=gi_t" target="_blank">Group</a>
-</div>
-
-<div class="section-title">📸 Instagram Services</div>
-<div class="container" id="insta"></div>
-
-<div class="section-title">📘 Facebook Services</div>
-<div class="container" id="fb"></div>
-
-<div class="cart">
-  <h3>🧾 Your Order</h3>
-  <div id="cartItems"></div>
-  <div class="total" id="total">Total: ₹0</div>
-</div>
-
-<input type="text" id="link" placeholder="Enter Post Link (Required)">
-<button class="order" onclick="sendOrder()">Order on WhatsApp</button>
-
-<!-- POPUP -->
-<div class="popup" id="popup">
-  <div class="popup-box">
-    <span class="close" onclick="closePopup()">❌</span>
-    <h3>TODAY'S PACKAGE</h3>
-    <p>3K LIKE + 5K FREE VIEWS</p>
-    <p>Only ₹60</p>
-    <p>DM NOW ON WHATSAPP</p>
-    <button onclick="goWhatsApp()">Chat Now</button>
-  </div>
-</div>
-
-<script>
-
-const WHATSAPP="917364934516";
-let cart={};
-
-// INSTAGRAM SERVICES
-const insta=[
-{name:"1K Likes",price:20},
-{name:"2K Likes",price:35},
-{name:"5K Likes",price:90},
-{name:"10K Likes",price:180},
-
-{name:"1K Followers",price:80},
-{name:"5K Followers",price:150},
-{name:"10K Followers",price:500},
-
-{name:"10K Views",price:20},
-{name:"50K Views",price:95},
-{name:"100K Views",price:180}
-];
-
-// FACEBOOK SERVICES
-const fb=[
-{name:"1K Likes",price:30},
-{name:"2K Likes",price:55},
-{name:"5K Likes",price:145},
-
-{name:"1K Followers",price:60},
-{name:"2K Followers",price:110},
-{name:"5K Followers",price:280},
-{name:"10K Followers",price:550},
-
-{name:"1K Views",price:15},
-{name:"2K Views",price:25},
-{name:"5K Views",price:70}
-];
-
-// CREATE SERVICES
-function create(list,id,platform){
-  const c=document.getElementById(id);
-  list.forEach(s=>{
-    let d=document.createElement("div");
-    d.className="card";
-    d.innerHTML=`<h3>${s.name}</h3><div class="price">₹${s.price}</div><button class="buy">Buy</button>`;
-    c.appendChild(d);
-
-    d.querySelector("button").onclick=()=>{
-      let key=platform+"-"+s.name;
-      if(!cart[key]) cart[key]={...s,qty:0,platform};
-      cart[key].qty++;
-      renderCart();
-    };
-  });
-}
-
-// CART
-function renderCart(){
-  let container=document.getElementById("cartItems");
-  container.innerHTML="";
-  let total=0;
-
-  for(let key in cart){
-    let item=cart[key];
-    total+=item.price*item.qty;
-
-    let div=document.createElement("div");
-    div.className="cart-item";
-
-    div.innerHTML=`
-      <span>${item.platform} ${item.name}</span>
-      <div class="qty">
-        <button onclick="changeQty('${key}',-1)">-</button>
-        ${item.qty}
-        <button onclick="changeQty('${key}',1)">+</button>
-      </div>
-      <button class="remove" onclick="removeItem('${key}')">X</button>
-    `;
-
-    container.appendChild(div);
-  }
-
-  document.getElementById("total").innerText="Total: ₹"+total;
-}
-
-function changeQty(key,val){
-  cart[key].qty+=val;
-  if(cart[key].qty<=0) delete cart[key];
-  renderCart();
-}
-
-function removeItem(key){
-  delete cart[key];
-  renderCart();
-}
-
-// SEND ORDER
-function sendOrder(){
-  let link=document.getElementById("link").value.trim();
-  if(!link) return alert("Enter link!");
-
-  if(Object.keys(cart).length===0) return alert("Select service!");
-
-  let msg="*RIJU XMD SERVICES*%0A%0A";
-  let total=0;
-
-  for(let key in cart){
-    let i=cart[key];
-    msg+=`• ${i.platform} ${i.name} x${i.qty}%0A`;
-    total+=i.price*i.qty;
-  }
-
-  msg+=`%0ATotal: ₹${total}%0A${link}`;
-
-  window.open(`https://wa.me/${WHATSAPP}?text=${msg}`);
-}
-
-// POPUP (ALWAYS SHOW ON REFRESH)
-window.onload = () => {
-  document.getElementById("popup").style.display = "flex";
-};
-
-function closePopup(){
-  document.getElementById("popup").style.display = "none";
-}
-
-function goWhatsApp(){
-  window.open("https://wa.me/917364934516");
-}
-
-// INIT
-create(insta,"insta","Instagram");
-create(fb,"fb","Facebook");
-
-</script>
-
-</body>
-  </html>
+</html>
