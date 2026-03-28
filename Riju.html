@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RIJU XMD SERVICES</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif;}
+body{
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:white;padding:20px;
+}
+
+h1{text-align:center;margin-bottom:10px;}
+
+.links{text-align:center;margin-bottom:15px;}
+.links a{
+  margin:5px;padding:8px 15px;
+  background:rgba(255,255,255,0.1);
+  border-radius:20px;color:white;text-decoration:none;
+}
+
+.section-title{margin-top:20px;font-size:18px;}
+
+.container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:12px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  padding:12px;border-radius:12px;text-align:center;
+  transition:0.3s;
+}
+.card:hover{transform:translateY(-5px);}
+
+.price{color:#00ffcc;margin:5px 0;}
+
+button{
+  padding:6px 10px;border:none;border-radius:6px;cursor:pointer;
+}
+
+.buy{background:#00c6ff;color:black;}
+
+.cart{
+  margin-top:20px;
+  background:rgba(0,0,0,0.3);
+  padding:15px;border-radius:12px;
+}
+
+.cart-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:8px 0;
+}
+
+.qty button{
+  margin:0 3px;
+  background:#25D366;color:white;
+}
+
+.remove{background:red;color:white;}
+
+.total{text-align:center;margin-top:10px;font-size:18px;}
+
+input{
+  width:100%;padding:10px;margin-top:10px;
+  border-radius:8px;border:none;
+}
+
+.order{
+  width:100%;padding:12px;margin-top:10px;
+  background:#25D366;color:white;border:none;
+}
+
+/* POPUP */
+.popup{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.8);
+  display:none;justify-content:center;align-items:center;
+}
+
+.popup-box{
+  background:#111;padding:20px;border-radius:12px;
+  text-align:center;position:relative;
+}
+
+.close{
+  position:absolute;top:5px;right:10px;cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🚀 RIJU XMD SERVICES</h1>
+
+<div class="links">
+<a href="https://www.instagram.com/coldemotions_" target="_blank">Instagram</a>
+<a href="https://whatsapp.com/channel/0029Vb0k8h95PO10OtSIvF2G" target="_blank">Channel</a>
+<a href="https://chat.whatsapp.com/I3lJmqapVm99KKEYZjJWNg?mode=gi_t" target="_blank">Group</a>
+</div>
+
+<div class="section-title">📸 Instagram Services</div>
+<div class="container" id="insta"></div>
+
+<div class="section-title">📘 Facebook Services</div>
+<div class="container" id="fb"></div>
+
+<div class="cart">
+  <h3>🧾 Your Order</h3>
+  <div id="cartItems"></div>
+  <div class="total" id="total">Total: ₹0</div>
+</div>
+
+<input type="text" id="link" placeholder="Enter Post Link (Required)">
+<button class="order" onclick="sendOrder()">Order on WhatsApp</button>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <span class="close" onclick="closePopup()">❌</span>
+    <h3>TODAY'S PACKAGE</h3>
+    <p>3K LIKE + 5K FREE VIEWS</p>
+    <p>Only ₹60</p>
+    <p>DM NOW ON WHATSAPP</p>
+    <button onclick="goWhatsApp()">Chat Now</button>
+  </div>
+</div>
+
+<script>
+
+const WHATSAPP="917364934516";
+let cart={};
+
+// INSTAGRAM SERVICES
+const insta=[
+{name:"1K Likes",price:20},
+{name:"2K Likes",price:35},
+{name:"5K Likes",price:90},
+{name:"10K Likes",price:180},
+
+{name:"1K Followers",price:80},
+{name:"5K Followers",price:150},
+{name:"10K Followers",price:500},
+
+{name:"10K Views",price:20},
+{name:"50K Views",price:95},
+{name:"100K Views",price:180}
+];
+
+// FACEBOOK SERVICES
+const fb=[
+{name:"1K Likes",price:30},
+{name:"2K Likes",price:55},
+{name:"5K Likes",price:145},
+
+{name:"1K Followers",price:60},
+{name:"2K Followers",price:110},
+{name:"5K Followers",price:280},
+{name:"10K Followers",price:550},
+
+{name:"1K Views",price:15},
+{name:"2K Views",price:25},
+{name:"5K Views",price:70}
+];
+
+// CREATE SERVICES
+function create(list,id,platform){
+  const c=document.getElementById(id);
+  list.forEach(s=>{
+    let d=document.createElement("div");
+    d.className="card";
+    d.innerHTML=`<h3>${s.name}</h3><div class="price">₹${s.price}</div><button class="buy">Buy</button>`;
+    c.appendChild(d);
+
+    d.querySelector("button").onclick=()=>{
+      let key=platform+"-"+s.name;
+      if(!cart[key]) cart[key]={...s,qty:0,platform};
+      cart[key].qty++;
+      renderCart();
+    };
+  });
+}
+
+// CART
+function renderCart(){
+  let container=document.getElementById("cartItems");
+  container.innerHTML="";
+  let total=0;
+
+  for(let key in cart){
+    let item=cart[key];
+    total+=item.price*item.qty;
+
+    let div=document.createElement("div");
+    div.className="cart-item";
+
+    div.innerHTML=`
+      <span>${item.platform} ${item.name}</span>
+      <div class="qty">
+        <button onclick="changeQty('${key}',-1)">-</button>
+        ${item.qty}
+        <button onclick="changeQty('${key}',1)">+</button>
+      </div>
+      <button class="remove" onclick="removeItem('${key}')">X</button>
+    `;
+
+    container.appendChild(div);
+  }
+
+  document.getElementById("total").innerText="Total: ₹"+total;
+}
+
+function changeQty(key,val){
+  cart[key].qty+=val;
+  if(cart[key].qty<=0) delete cart[key];
+  renderCart();
+}
+
+function removeItem(key){
+  delete cart[key];
+  renderCart();
+}
+
+// SEND ORDER
+function sendOrder(){
+  let link=document.getElementById("link").value.trim();
+  if(!link) return alert("Enter link!");
+
+  if(Object.keys(cart).length===0) return alert("Select service!");
+
+  let msg="*RIJU XMD SERVICES*%0A%0A";
+  let total=0;
+
+  for(let key in cart){
+    let i=cart[key];
+    msg+=`• ${i.platform} ${i.name} x${i.qty}%0A`;
+    total+=i.price*i.qty;
+  }
+
+  msg+=`%0ATotal: ₹${total}%0A${link}`;
+
+  window.open(`https://wa.me/${WHATSAPP}?text=${msg}`);
+}
+
+// POPUP (ALWAYS SHOW ON REFRESH)
+window.onload = () => {
+  document.getElementById("popup").style.display = "flex";
+};
+
+function closePopup(){
+  document.getElementById("popup").style.display = "none";
+}
+
+function goWhatsApp(){
+  window.open("https://wa.me/917364934516");
+}
+
+// INIT
+create(insta,"insta","Instagram");
+create(fb,"fb","Facebook");
+
+</script>
+
+</body>
+  </html>
