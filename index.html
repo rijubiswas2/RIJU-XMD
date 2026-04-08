@@ -14,20 +14,14 @@ body{
 }
 
 /* HEADER */
-.header{
-  text-align:center;
-  padding:20px;
-}
-.header h1{
-  font-size:26px;
-}
+.header{text-align:center;padding:20px;}
 .header span{
   background:linear-gradient(90deg,#ff7b00,#ff00cc);
   padding:5px 12px;
   border-radius:20px;
 }
 
-/* SECTION CARD */
+/* SECTION */
 .section{
   background:white;
   color:black;
@@ -36,13 +30,9 @@ body{
   border-radius:15px;
 }
 
-/* TITLE */
 .title{
   font-weight:bold;
   margin-bottom:8px;
-  display:flex;
-  align-items:center;
-  gap:8px;
 }
 
 /* SERVICE */
@@ -53,8 +43,8 @@ body{
   padding:6px 0;
   border-bottom:1px dashed #ccc;
 }
+.service:last-child{border-bottom:none;}
 
-/* PRICE */
 .price{
   background:linear-gradient(90deg,#ff0077,#ff6600);
   color:white;
@@ -63,9 +53,7 @@ body{
   font-size:12px;
 }
 
-/* BUTTON */
 .buy{
-  margin-left:8px;
   background:#111;
   color:white;
   border:none;
@@ -147,19 +135,19 @@ input{
 
 <!-- FOLLOWERS -->
 <div class="section">
-<div class="title">👤 Instagram Followers(❗No refill)</div>
+<div class="title">👤 Instagram Followers</div>
 
-<div class="service">1K Followers (No Refill)
-<span class="price">₹80</span><button class="buy" onclick="add('1K Followers',80)">Buy</button></div>
+<div class="service">1K Followers <span class="price">₹80</span>
+<button class="buy" onclick="add('1K Followers',80)">Buy</button></div>
 
-<div class="service">1K Followers (365 Days)
-<span class="price">₹100</span><button class="buy" onclick="add('1K Followers Refill',100)">Buy</button></div>
+<div class="service">1K Followers Refill <span class="price">₹100</span>
+<button class="buy" onclick="add('1K Followers Refill',100)">Buy</button></div>
 
-<div class="service">5K Followers (No Refill)
-<span class="price">₹300</span><button class="buy" onclick="add('5K Followers',300)">Buy</button></div>
+<div class="service">5K Followers <span class="price">₹300</span>
+<button class="buy" onclick="add('5K Followers',300)">Buy</button></div>
 
-<div class="service">5K Followers (365 Days)
-<span class="price">₹400</span><button class="buy" onclick="add('5K Followers Refill',400)">Buy</button></div>
+<div class="service">5K Followers Refill <span class="price">₹400</span>
+<button class="buy" onclick="add('5K Followers Refill',400)">Buy</button></div>
 
 </div>
 
@@ -167,17 +155,17 @@ input{
 <div class="section">
 <div class="title">🇮🇳 Indian Followers</div>
 
-<div class="service">1K Indian Followers
-<span class="price">₹200</span><button class="buy" onclick="add('1K Indian Followers',200)">Buy</button></div>
+<div class="service">1K Indian Followers <span class="price">₹200</span>
+<button class="buy" onclick="add('1K Indian Followers',200)">Buy</button></div>
 
-<div class="service">1K Original Indian
-<span class="price">₹450</span><button class="buy" onclick="add('1K Original Indian',450)">Buy</button></div>
+<div class="service">1K Original Indian <span class="price">₹450</span>
+<button class="buy" onclick="add('1K Original Indian',450)">Buy</button></div>
 
-<div class="service">5K Indian Followers
-<span class="price">₹900</span><button class="buy" onclick="add('5K Indian Followers',900)">Buy</button></div>
+<div class="service">5K Indian Followers <span class="price">₹900</span>
+<button class="buy" onclick="add('5K Indian Followers',900)">Buy</button></div>
 
-<div class="service">5K Original Indian
-<span class="price">₹2000</span><button class="buy" onclick="add('5K Original Indian',2000)">Buy</button></div>
+<div class="service">5K Original Indian <span class="price">₹2000</span>
+<button class="buy" onclick="add('5K Original Indian',2000)">Buy</button></div>
 
 </div>
 
@@ -185,11 +173,20 @@ input{
 <div class="section">
 <div class="title">👁 Instagram Views</div>
 
-<div class="service">1K Views <span class="price">₹2</span><button class="buy" onclick="add('1K Views',1)">Buy</button></div>
-<div class="service">10K Views <span class="price">₹15</span><button class="buy" onclick="add('10K Views',7)">Buy</button></div>
-<div class="service">50K Views <span class="price">₹60</span><button class="buy" onclick="add('50K Views',25)">Buy</button></div>
-<div class="service">100K Views <span class="price">₹100</span><button class="buy" onclick="add('100K Views',35)">Buy</button></div>
-<div class="service">1M Views <span class="price">₹400</span><button class="buy" onclick="add('1M Views',300)">Buy</button></div>
+<div class="service">1K Views <span class="price">₹3</span>
+<button class="buy" onclick="add('1K Views',1)">Buy</button></div>
+
+<div class="service">10K Views <span class="price">₹15</span>
+<button class="buy" onclick="add('10K Views',7)">Buy</button></div>
+
+<div class="service">50K Views <span class="price">₹40</span>
+<button class="buy" onclick="add('50K Views',25)">Buy</button></div>
+
+<div class="service">100K Views <span class="price">₹75</span>
+<button class="buy" onclick="add('100K Views',35)">Buy</button></div>
+
+<div class="service">1M Views <span class="price">₹350</span>
+<button class="buy" onclick="add('1M Views',300)">Buy</button></div>
 
 </div>
 
@@ -197,8 +194,23 @@ input{
 <div class="section">
 <div class="title">❤️ Instagram Likes</div>
 
-<div class="service">1K Likes <span class="price">₹20</span><button class="buy" onclick="add('1K Likes',20)">Buy</button></div>
-<div class="service">1K Indian Likes <span class="price">₹30</span><button class="buy" onclick="add('1K Indian Likes',30)">Buy</button></div>
+<div class="service">1K Likes <span class="price">₹25</span>
+<button class="buy" onclick="add('1K Likes',20)">Buy</button></div>
+
+<div class="service">1K Indian Likes <span class="price">₹35</span>
+<button class="buy" onclick="add('1K Indian Likes',30)">Buy</button></div>
+
+</div>
+
+<!-- COMMENTS -->
+<div class="section">
+<div class="title">💬 Instagram Comments</div>
+
+<div class="service">1K Comments <span class="price">₹50</span>
+<button class="buy" onclick="add('1K Comments',50)">Buy</button></div>
+
+<div class="service">2K Comments <span class="price">₹90</span>
+<button class="buy" onclick="add('2K Comments',90)">Buy</button></div>
 
 </div>
 
@@ -209,7 +221,7 @@ input{
 <div id="total">Total ₹0</div>
 </div>
 
-<input id="link" placeholder="Enter Post Link">
+<input id="link" placeholder="Enter Post Link (Required)">
 <button class="order" onclick="send()">Order on WhatsApp</button>
 
 <!-- SUPPORT -->
@@ -225,7 +237,7 @@ input{
 <div class="popup-box">
 <span class="close" onclick="closePop()">❌</span>
 <h3>Today's Package</h3>
-<p>50k views + 1k like free</p>
+<p>3K Likes + 5K Free Views</p>
 <p>₹60</p>
 <button onclick="go()">Chat Now</button>
 </div>
@@ -233,6 +245,7 @@ input{
 
 <script>
 let cart={};
+
 function add(name,price){
 if(!cart[name]) cart[name]={price,qty:0};
 cart[name].qty++;
@@ -242,7 +255,7 @@ render();
 function render(){
 let html="";let total=0;
 for(let i in cart){
-html+=i+" x"+cart[i].qty+"<br>";
+html+=`• ${i} x${cart[i].qty}<br>`;
 total+=cart[i].price*cart[i].qty;
 }
 document.getElementById("cart").innerHTML=html;
@@ -250,13 +263,30 @@ document.getElementById("total").innerText="Total ₹"+total;
 }
 
 function send(){
-let link=document.getElementById("link").value;
-let msg="*RIJU XMD SERVICES*%0A";
-for(let i in cart){
-msg+=`%0A${i} x${cart[i].qty}`;
+let link=document.getElementById("link").value.trim();
+
+if(Object.keys(cart).length===0){
+alert("Select at least 1 service!");
+return;
 }
-msg+=`%0A${link}`;
-window.open("https://wa.me/917364934516?text="+msg);
+
+if(!link){
+alert("Enter Post Link!");
+return;
+}
+
+let msg="*RIJU XMD SERVICES*%0A%0A";
+let total=0;
+
+for(let i in cart){
+msg+=`• ${i} x${cart[i].qty}%0A`;
+total+=cart[i].price*cart[i].qty;
+}
+
+msg+=`%0ATotal: ₹${total}%0A`;
+msg+=`Link: ${link}`;
+
+window.open("https://wa.me/917364934516?text="+encodeURIComponent(msg));
 }
 
 window.onload=()=>{
@@ -268,7 +298,8 @@ document.getElementById("popup").style.display="none";
 }
 
 function go(){
-window.open("https://wa.me/917364934516?text=I want to buy today's package 50k views+ 1k like");
+let msg="I want to buy today's package";
+window.open("https://wa.me/917364934516?text="+encodeURIComponent(msg));
 }
 </script>
 
